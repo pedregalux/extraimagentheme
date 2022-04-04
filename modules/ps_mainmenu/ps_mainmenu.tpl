@@ -25,6 +25,11 @@
               {if $node.children|count}
               <div {if $depth === 0} class="popover sub-menu js-sub-menu collapse"{else} class="collapse"{/if} id="top_sub_menu_{$_expand_id}">
                 {menu nodes=$node.children depth=$node.depth parent=$node}
+                {if $node.image_urls}
+                  {foreach from=$node.image_urls item=image_url}
+                    <img class="img_menu" src="{$image_url}" />
+                  {/foreach}
+                {/if}
               </div>
               {/if}
             </li>
@@ -35,5 +40,5 @@
 
 <div class="menu js-top-menu position-static hidden-sm-down" id="_desktop_top_menu">
     {menu nodes=$menu.children}
-    <div class="clearfix"></div>
+    {* <div class="clearfix"></div> *}
 </div>
